@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    font-size: 17px;
+    line-height: 26px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px gray;
+    --webkit-box-shadow: 0 8px 6px -6px gray;
+    border-bottom: solid gray !important;
+}
+
+.nav-link{
+    font-weight: 300 !important;
+}
+
+.navbar-brand{
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.footer{
+    color: white;
+    padding: 25px;
+    background-color: #000;
+    background: -webkit-linear-gradient(to right, #434343, #000000);
+    background: linear-gradient(to right, #434343, #000000);
+}
+
+.footer a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.footer a:hover{
+    color: #ffefba;
+    border-bottom: 1px solid #ffefba;
+}
+
+.pnf{
+    display: flex;
+    min-height: 65vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button{
+    position: relative;
+    padding: 20px 50px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 250px;
+    overflow: hidden;
+}
+
+.button span{
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 8px;
+    transition: 0.5s;
+}
+
+.button:hover span{
+    color: #000;
+}
+
+.button .liquid{
+    position: absolute;
+    left: 0;
+    top: -100px;
+    width: 250px;
+    height: 250px;
+    background: #4973ff;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+}
+
+.button:hover .liquid{
+    top: -150px;
+}
+
+.button .liquid::before,
+.button .liquid::after{
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+}
+
+.button .liquid::before{
+    border-radius: 45%;
+    background: rgba(20, 20, 20, 1);
+    animation: animate 5s linear infinite;
+}
+
+.button .liquid::after{
+    border-radius: 40%;
+    background: rgba(20, 20, 20, 0.5);
+    animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+    0%{
+        transform: translate(-50%, -75%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
+
+/* NavBarComponent */
+
+.navBarList{
+    margin: 0;
+    padding: 20px 0;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.navBarList li{
+    list-style: none;
+    text-align: center;
+    display: block;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.navBarList li:last-child{
+    border-right: none;
+}
+
+.navBarList li a{
+    text-decoration: none;
+    padding: 0px 50px;
+    display: block;
+}
+
+.navBarList li a .icon{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 auto 10px;
+}
+
+.navBarList li a .icon .fa{
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 34px;
+    transition: 0.5s;
+    color: #000;
+}
+
+.navBarList li a .icon .fa:last-child{
+    color: #4973ff;
+}
+
+.navBarList li a:hover .icon .fa{
+    transform: translateY(-100%);
+}
+
+.navBarList li a .name{
+    position: relative;
+    height: 20px;
+    width: 100%;
+    display: block;
+}
+
+.navBarList li a .name span{
+    display: block;
+    position: relative;
+    color: #4973ff;
+    font-size: 18px;
+    line-height: 20px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.navBarList li a:hover .name span{
+    color: #000;
+}
