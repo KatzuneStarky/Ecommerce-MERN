@@ -3,7 +3,7 @@ import LayoutComp from "../Components/Layout/layoutComp";
 
 const Policy = () => {
   return (
-    <LayoutComp>
+    <LayoutComp title={"Privacy Policy"}>
         <div>Privacy Policy Page</div>
     </LayoutComp>
   );

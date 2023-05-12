@@ -6,11 +6,10 @@ import Navbar from "../Navbar";
 const Header = () => {
     return (
         <>
-            <nav className="navbar d-flex justify-content-between">
+            <nav className="navbar d-flex">
                 <Link className="navbar-brand" to={"/"}>
                     <BsShop /> Omamori Shop
                 </Link>
-
                 <Navbar />
             </nav>
         </>

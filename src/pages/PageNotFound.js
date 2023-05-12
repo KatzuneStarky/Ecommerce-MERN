@@ -4,7 +4,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import Button from "../Components/Button";
 const PageNotFound = () => {
   return (
-    <LayoutComp>
+    <LayoutComp title={"Go Back - Not Found"}>
       <div className="pnf">
         <Player
           autoplay
