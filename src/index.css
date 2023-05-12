@@ -195,3 +195,12 @@
 
 /* Contact Page */
 
+.contactUs{
+    position: relative;
+    width: 100%;
+    padding: 40px 100px;
+}
+
+.contactUs .title{
+    display: flex;
+}
