@@ -29,32 +29,22 @@ const Navbar = () => {
             </li>
 
             <li>
-                <NavLink to={"/register"}>
-                    <div className="icon">
-                        <BiUserPlus className="fa" />
-                        <BiUserPlus className="fa" />
-                    </div>
-                    <div className="name">Register</div>
-                </NavLink>
-            </li>
-
-            <li>
-                <NavLink to={"/login"}>
-                    <div className="icon">
-                        <BiLogIn className="fa" />
-                        <BiLogIn className="fa" />
-                    </div>
-                    <div className="name">Login</div>
-                </NavLink>
-            </li>
-
-            <li>
                 <NavLink to={"/cart"}>
                     <div className="icon">
                         <BiCartAlt className="fa" />
                         <BiCartAlt className="fa" />
                     </div>
                     <div className="name">Cart(0)</div>
+                </NavLink>
+            </li>
+
+            <li>
+                <NavLink to={"/sesion"}>
+                    <div className="icon">
+                        <BiLogIn className="fa" />
+                        <BiLogIn className="fa" />
+                    </div>
+                    <div className="name">Iniciar Sesion</div>
                 </NavLink>
             </li>
         </ul>

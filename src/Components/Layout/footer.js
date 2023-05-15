@@ -1,16 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SocialMedia from "../SocialMedia";
 
 const Footer = () => {
     return (
-        <div className="footer">
-            <h4 className="text-center">Derechos reservados &copy; KatzuneStarky</h4>
-            <p className="text-center mt-3">
-                <Link to={"/about"}> About </Link> |{" "}
-                <Link to={"/contact"}> Contact </Link> |{" "}
-                <Link to={"/policy"}> Privacy Policy </Link>
-            </p>
-        </div>
+        <>
+            <footer>
+                <div className="footerContainer">
+                    <div className="sec aboutus">
+                        <h2>About Us</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                            enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                            nisi ut aliquip ex ea commodo consequat.{" "}
+                        </p>
+                        <SocialMedia />
+                    </div>
+
+                    <div className="sec quickLinks">
+                        <h2>Quick Links</h2>
+                        <ul>
+                            <li>
+                                <Link to={"/Contact"}>Contact Us</Link>
+                            </li>
+
+                            <li>
+                                <Link to={"/About"}>About Us</Link>
+                            </li>
+
+                            <li>
+                                <Link to={"/Policy"}>Privacy Policy</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+            <div className="copy">
+                <p>Copyright &copy; 2023 Katzune Starky. All rights reserved.</p>
+            </div>
+        </>
     );
 };
 
