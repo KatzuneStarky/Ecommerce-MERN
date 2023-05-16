@@ -4,7 +4,7 @@ import Jwt from "jsonwebtoken";
 
 export const registerController = async (req, res) => {
     try {
-        const { name, email, password, phone, address } = req.body;
+        const { name, email, password, phone, address, answer } = req.body;
 
         if (!name) {
             return res.send({ message: "Name is required" })
@@ -26,6 +26,10 @@ export const registerController = async (req, res) => {
             return res.send({ message: "Address is required" })
         }
 
+        if (!answer) {
+            return res.send({ message: "Answer is required" })
+        }
+
         const existingUser = await userModel.findOne({ email });
 
         if (existingUser) {
@@ -37,7 +41,7 @@ export const registerController = async (req, res) => {
 
         const hashedPassword = await hashPassword(password);
 
-        const user = await new userModel({ name, email, phone, address, password: hashedPassword }).save();
+        const user = await new userModel({ name, email, phone, address, password: hashedPassword, answer }).save();
 
         res.status(200).send({
             success: true,
@@ -106,3 +110,45 @@ export const loginController = async (req, res) => {
         });
     }
 };
+
+export const forgotPasswordController = async (req, res) => {
+    try {
+        const { email, answer, newPassword } = req.body
+
+        if (!email) {
+            return res.send({ message: "El correo es requerido" })
+        }
+
+        if (!answer) {
+            return res.send({ message: "Se nesecita la palabra secreta" })
+        }
+
+        if (!newPassword) {
+            return res.send({ message: "La contraseña es requerida" })
+        }
+
+        const user = await userModel.findOne({ email, answer })
+
+        if(!user){
+            return res.status(404).send({
+                success: false,
+                message: "Email o respuesta incorrecta"
+            })
+        }
+
+        const hashed = await hashPassword(newPassword)
+        await userModel.findByIdAndUpdate(user._id, { password: hashed })
+        res.status(200).send({
+            success: true,
+            message: "Contraseña actualizada"
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Algo salio mal",
+            error,
+        });
+    }
+}
