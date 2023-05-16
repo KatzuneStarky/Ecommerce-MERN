@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Navbar";
 
-const Header = () => {
+const Header = () => {   
     return (
         <>
             <nav className="navbar d-flex justify-content-center">

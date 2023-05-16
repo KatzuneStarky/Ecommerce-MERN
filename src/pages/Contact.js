@@ -40,42 +40,42 @@ const Contact = () => {
     <LayoutComp title={"Omamori Shop - Contact Us"}>
       <div className="contactUs">
         <div className="tittle">
-          <h2>Get in touch</h2>
+          <h2>Sigamos en contacto</h2>
         </div>
         <div className="box">
           <div className="contact form">
-            <h3>Send a message</h3>
+            <h3>Contactanos</h3>
 
             <form onSubmit={sendEmail}>
               <div className="formBox">
                 <div className="row50">
                   <div className="inputBox">
-                    <span>First name</span>
-                    <input type="text" placeholder="First name" name="fName" />
+                    <span>Nombre(s)</span>
+                    <input type="text" placeholder="" name="fName" required />
                   </div>
 
                   <div className="inputBox">
-                    <span>Last name</span>
-                    <input type="text" placeholder="Last name" name="lName" />
+                    <span>Apellido(s)</span>
+                    <input type="text" placeholder="" name="lName" required />
                   </div>
                 </div>
 
                 <div className="row50">
                   <div className="inputBox">
                     <span>Email</span>
-                    <input type="text" placeholder="email@email.com" name="email" />
+                    <input type="text" placeholder="" name="email" required />
                   </div>
 
                   <div className="inputBox">
-                    <span>Phone</span>
-                    <input type="text" placeholder="+52 123 456 7890" name="phone_number" />
+                    <span>Telefono</span>
+                    <input type="text" placeholder="" name="phone_number" required />
                   </div>
                 </div>
 
                 <div className="row100">
                   <div className="inputBox">
-                    <span>Message</span>
-                    <textarea name="message" placeholder="Type your message here..."></textarea>
+                    <span>Mensaje</span>
+                    <textarea name="message" placeholder="Tu mensaje aqui..." required></textarea>
                   </div>
                 </div>
 
@@ -88,14 +88,14 @@ const Contact = () => {
             </form>
           </div>
           <div className="contact info">
-            <h3>Contact info</h3>
+            <h3>Informacion de contacto</h3>
             <div className="infoBox">
               <div>
                 <span>
                   <HiLocationMarker />
                 </span>
                 <p>
-                  La paz, Baja California Sur <br /> México
+                  La paz, Baja California Sur, México
                 </p>
               </div>
 
@@ -103,8 +103,8 @@ const Contact = () => {
                 <span>
                   <AiTwotoneMail />
                 </span>
-                <Link to={"mailto:omamorishop@gmail.com"}>
-                  omamorishop@gmail.com
+                <Link to={"mailto:omamorishopanimeandkpop@gmail.com"}>
+                  omamorishopanimeandkpop@gmail.com
                 </Link>
               </div>
 

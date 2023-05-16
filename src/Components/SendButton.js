@@ -7,7 +7,7 @@ const SendButton = () => {
             <div className="wrapper">
                 <BsFillSendFill className="bi" />
             </div>
-            <span>Submit</span>
+            <span>Enviar</span>
         </button>
     );
 };

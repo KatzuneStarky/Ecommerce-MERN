@@ -1,9 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { AiTwotoneHome } from 'react-icons/ai'
-import { BiCategory, BiUserPlus, BiLogIn, BiCartAlt } from 'react-icons/bi'
+import { AiTwotoneHome, AiOutlineLogout, AiFillDashboard, AiOutlineUser } from 'react-icons/ai'
+import { BiCategory, BiLogIn, BiCartAlt } from 'react-icons/bi'
+import { useAuth } from "../Context/Auth";
 
 const Navbar = () => {
+    const [auth, setAuth] = useAuth()
+
+    const handleLogout = () =>{
+        setAuth({
+            ...auth,
+            user: null,
+            token: ''
+        })
+        localStorage.removeItem("auth")
+    }
     return (
         <ul className="navBarList">
             <li>
@@ -38,15 +49,51 @@ const Navbar = () => {
                 </NavLink>
             </li>
 
-            <li>
-                <NavLink to={"/sesion"}>
-                    <div className="icon">
-                        <BiLogIn className="fa" />
-                        <BiLogIn className="fa" />
-                    </div>
-                    <div className="name">Iniciar Sesion</div>
-                </NavLink>
-            </li>
+            {
+                !auth.user ? (
+                    <li>
+                        <NavLink to={"/sesion"}>
+                            <div className="icon">
+                                <BiLogIn className="fa" />
+                                <BiLogIn className="fa" />
+                            </div>
+                            <div className="name">Iniciar Sesion</div>
+                        </NavLink>
+                    </li>
+                ): (
+                    <>
+                        <li>
+                            <NavLink to={"/dashboard"}>
+                                <div className="icon">
+                                    <AiFillDashboard className="fa" />
+                                    <AiFillDashboard className="fa" />
+                                </div>
+                                <div className="name">Dashboard</div>
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink to={"/configuracion"}>
+                                <div className="icon">
+                                    <AiOutlineUser className="fa" />
+                                    <AiOutlineUser className="fa" />
+                                </div>
+                                <div className="name">{auth?.user?.name}</div>
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink to={"/"} onClick={handleLogout}>
+                                <div className="icon">
+                                    <AiOutlineLogout className="fa" />
+                                    <AiOutlineLogout className="fa" />
+                                </div>
+                                <div className="name">Cerrar Sesion</div>
+                            </NavLink>
+                        </li>
+                    </>
+                )
+            }
         </ul>
     );
 };

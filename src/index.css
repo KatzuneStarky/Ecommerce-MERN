@@ -630,7 +630,7 @@ footer .footerContainer .sec.aboutus p {
     position: relative;
     width: 768px;
     max-width: 100%;
-    min-height: 650px;
+    min-height: 850px;
     background: linear-gradient(to right, #ff4b28, #ff228b);
     border-radius: 10px;
     overflow: hidden;
@@ -872,4 +872,63 @@ footer .footerContainer .sec.aboutus p {
 
 .submit:hover:after{
     transform: translateX(170px) skewX(30deg);
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.buttons .submit{
+    margin: 10px;
+}
+
+/* Access Denied */
+
+.accessDenied{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #eee;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Forgot Password */
+
+.forgot{
+    background-color: #190229;
+    border-radius: 30px;
+}
+
+.inputs{
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+.main-input{
+    width: 100%;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    border-bottom: 2px solid #4e51fd !important;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.fButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-sz-primary{
+    color: white !important;
+    background-color: #4e51fd;
+}
+
+.btn-sz-primary:hover{
+    background-color: #3c3ff8;
 }

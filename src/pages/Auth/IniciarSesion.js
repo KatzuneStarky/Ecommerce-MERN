@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import LayoutComp from "../../Components/Layout/layoutComp";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import SocialMedia from "../../Components/SocialMedia";
 import { AiOutlineArrowRight } from 'react-icons/ai'
+import { useAuth } from "../../Context/Auth";
 
 const IniciarSesion = () => {
     const [name, setName] = useState("");
@@ -12,8 +13,13 @@ const IniciarSesion = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const navigate = useNavigate();
     const [isActive, setActive] = useState("false");
+    const [answer, setAnswer] = useState("");
+    const [auth, setAuth] = useAuth()
+
+    const navigate = useNavigate();
+    const location = useLocation()
+
     const ToggleClass = () => {
         setActive(!isActive);
     };
@@ -27,6 +33,7 @@ const IniciarSesion = () => {
                 password,
                 phone,
                 address,
+                answer
             });
             if (res && res.data.success) {
                 toast.success(res.data && res.data.message);
@@ -49,8 +56,13 @@ const IniciarSesion = () => {
             });
             if (result && result.data.success) {
                 toast.success(result.data && result.data.message);
-                navigate("/");
-                console.log(result);
+                setAuth({
+                    ...auth,
+                    user: result.data.user,
+                    token: result.data.token
+                })
+                localStorage.setItem("auth", JSON.stringify(result.data))
+                navigate(location.state || "/");
             } else {
                 toast.error(result.data.message);
                 console.log(result);
@@ -75,7 +87,7 @@ const IniciarSesion = () => {
                         <div className="social-container">
                             <SocialMedia />
                         </div>
-                        <p>si</p>
+                        <p>Tenemos venta de articulos varios de anime y kpop</p>
                         <input
                             type="text"
                             value={name}
@@ -115,12 +127,29 @@ const IniciarSesion = () => {
                             placeholder="Ingresa tu direccion"
                             required
                         />
-                        <button type="submit" className="submit">
-                            Registrarse
-                            <span>
-                                <AiOutlineArrowRight />
-                            </span>
-                        </button>
+
+                        <input
+                            type="text"
+                            value={answer}
+                            onChange={(e) => setAnswer(e.target.value)}
+                            placeholder="Ingresa una palabra secreta"
+                            required
+                        />
+                        <div className="buttons">
+                            <button type="submit" className="submit" onClick={() => navigate("/forgot-password")}>
+                                Olvide mi contraseña
+                                <span>
+                                    <AiOutlineArrowRight />
+                                </span>
+                            </button>
+
+                            <button type="submit" className="submit">
+                                Registrarse
+                                <span>
+                                    <AiOutlineArrowRight />
+                                </span>
+                            </button>
+                        </div>
                     </form>
                 </div>
 
@@ -130,7 +159,7 @@ const IniciarSesion = () => {
                         <div className="social-container">
                             <SocialMedia />
                         </div>
-                        <p>si</p>
+                        <p>Tenemos venta de articulos varios de anime y kpop</p>
                         <input
                             type="email"
                             value={email}
