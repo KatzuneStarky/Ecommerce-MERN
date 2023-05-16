@@ -3,10 +3,8 @@ import LayoutComp from "../../Components/Layout/layoutComp";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { AiFillFacebook, AiOutlineWhatsApp } from "react-icons/ai";
-import { BsTelegram } from "react-icons/bs";
-import { FaTiktok } from "react-icons/fa";
+import SocialMedia from "../../Components/SocialMedia";
+import { AiOutlineArrowRight } from 'react-icons/ai'
 
 const IniciarSesion = () => {
     const [name, setName] = useState("");
@@ -15,6 +13,10 @@ const IniciarSesion = () => {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const navigate = useNavigate();
+    const [isActive, setActive] = useState("false");
+    const ToggleClass = () => {
+        setActive(!isActive);
+    };
 
     const registerSubmit = async (e) => {
         e.preventDefault();
@@ -61,25 +63,19 @@ const IniciarSesion = () => {
 
     return (
         <LayoutComp title={"Iniciar Sesion - OmamoriShop"}>
-            <div className="sesionContainer">
-                <div className="singUp">
+            <div
+                className={
+                    isActive ? "sesionContainer right-panel-active" : "sesionContainer"
+                }
+                id="main"
+            >
+                <div className="signUp">
                     <form onSubmit={registerSubmit}>
                         <h1>Crear una cuenta</h1>
                         <div className="social-container">
-                            <Link>
-                                <AiFillFacebook />
-                            </Link>
-                            <Link>
-                                <AiOutlineWhatsApp />
-                            </Link>
-                            <Link>
-                                <BsTelegram />
-                            </Link>
-                            <Link>
-                                <FaTiktok />
-                            </Link>
+                            <SocialMedia />
                         </div>
-                        <p>O usa tu email para el registro</p>
+                        <p>si</p>
                         <input
                             type="text"
                             value={name}
@@ -119,16 +115,22 @@ const IniciarSesion = () => {
                             placeholder="Ingresa tu direccion"
                             required
                         />
-                        <button type="submit">
-                            <span>Registrarse</span>
+                        <button type="submit" className="submit">
+                            Registrarse
+                            <span>
+                                <AiOutlineArrowRight />
+                            </span>
                         </button>
                     </form>
                 </div>
 
-                <div className="singIn">
+                <div className="signIn">
                     <form onSubmit={loginSubmit}>
                         <h1>Iniciar Sesion</h1>
-                        <p>O usa tu email para el registro</p>
+                        <div className="social-container">
+                            <SocialMedia />
+                        </div>
+                        <p>si</p>
                         <input
                             type="email"
                             value={email}
@@ -144,10 +146,40 @@ const IniciarSesion = () => {
                             placeholder="Ingresa tu contraseña"
                             required
                         />
-                        <button type="submit">
-                            <span>Login</span>
+                        <button type="submit" className="submit">
+                            Iniciar Sesion
+                            <span>
+                                <AiOutlineArrowRight />
+                            </span>
                         </button>
                     </form>
+                </div>
+
+                <div className="overlay-container">
+                    <div className="overlay">
+                        <div className="overlay-left">
+                            <h1>Bienvenid@ de vuelta</h1>
+                            <p>Para seguir conectado con nosotros favor de iniciar sesion</p>
+                            <button id="signIn" onClick={ToggleClass}>
+                                <div className="wrapper">
+                                    <img src="https://dbdzm869oupei.cloudfront.net/img/sticker/preview/29037.png" alt="" />
+                                </div>
+                                <span>Iniciar Sesion</span>
+                            </button>
+                        </div>
+                        <div className="overlay-right">
+                            <h1>Que tal!</h1>
+                            <p>
+                                Ingresa tu informacion para darte de alta en nuestro sistema
+                            </p>
+                            <button id="signUp" onClick={ToggleClass}>
+                                <div className="wrapper">
+                                    <img src="https://dbdzm869oupei.cloudfront.net/img/sticker/preview/29037.png" alt="" />
+                                </div>
+                                <span>Registrarse</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </LayoutComp>

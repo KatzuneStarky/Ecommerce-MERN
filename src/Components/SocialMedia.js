@@ -11,22 +11,22 @@ const SocialMedia = () => {
     return (
         <ul className="socialMedia">
             <li>
-                <Link>
+                <Link to={"https://www.facebook.com/OmamoriShopAnimekpop"} target="_blank">
                     <AiFillFacebook />
                 </Link>
             </li>
             <li>
-                <Link>
+                <Link to={""} target="_blank">
                     <AiOutlineWhatsApp />
                 </Link>
             </li>
             <li>
-                <Link>
+                <Link to={""} target="_blank">
                     <BsTelegram />
                 </Link>
             </li>
             <li>
-                <Link>
+                <Link to={""} target="_blank">
                     <FaTiktok />
                 </Link>
             </li>

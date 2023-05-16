@@ -13,7 +13,7 @@ const PageNotFound = () => {
           style={{ height: "600px", width: "600px" }}
         ></Player>
         <h2>Ops! Page Not Found</h2>
-        <Button text={"Go Back"} />
+        <Button text={"Go Back"} link={"/"} />
       </div>
     </LayoutComp>
   );
