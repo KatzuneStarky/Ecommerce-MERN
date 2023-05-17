@@ -73,7 +73,7 @@ const Navbar = () => {
                         </li>
 
                         <li>
-                            <NavLink to={`/profile/${auth?.user?.role === 1 ? 'admin': 'user' }`}>
+                            <NavLink to={`/dashboard/${auth?.user?.role === 1 ? 'admin': 'user' }/profile`}>
                                 <div className="icon">
                                     <AiOutlineUser className="fa" />
                                     <AiOutlineUser className="fa" />
