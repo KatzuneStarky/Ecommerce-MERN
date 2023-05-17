@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const AccesDenied = () => {
+const AccesDenied = ({path = 'sesion'}) => {
     const [count, setCount] = useState(5)
     const navigate = useNavigate()
     const location = useLocation()
@@ -11,11 +11,11 @@ const AccesDenied = () => {
         const interval = setInterval(() => {
             setCount((prevValue) => --prevValue)
         }, 1000)
-        count === 0 && navigate("/sesion", {
+        count === 0 && navigate(`/${path}`, {
             state: location.pathname
         })
         return () => clearInterval(interval)
-    }, [count, navigate, location])
+    }, [count, navigate, location, path])
     
 
     return (

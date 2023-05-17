@@ -2,12 +2,12 @@ import React from 'react'
 import LayoutComp from '../../Components/Layout/layoutComp'
 import UserMenu from './UserMenu'
 
-const Dashboard = () => {
+const Profile = () => {
     return (
-        <LayoutComp title={"Dashboard - Omamori Shop"}>
+        <LayoutComp style={"bg-admin"} title={"Profile - Omamori Shop"}>
             <UserMenu />
         </LayoutComp>
     )
 }
 
-export default Dashboard
+export default Profile

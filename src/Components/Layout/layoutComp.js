@@ -5,9 +5,9 @@ import { Helmet } from "react-helmet";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
-const LayoutComp = ({ children, title, description, keywords, author }) => {
+const LayoutComp = ({ children, title, description, keywords, author, style }) => {
     return (
-        <div>
+        <div className={style}>
             <Helmet>
                 <meta charSet="utf-8" />
                 <meta name="description" content={description} />

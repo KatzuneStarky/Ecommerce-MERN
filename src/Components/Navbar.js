@@ -63,7 +63,7 @@ const Navbar = () => {
                 ): (
                     <>
                         <li>
-                            <NavLink to={"/dashboard"}>
+                            <NavLink to={`/dashboard/${auth?.user?.role === 1 ? 'admin': 'user' }`}>
                                 <div className="icon">
                                     <AiFillDashboard className="fa" />
                                     <AiFillDashboard className="fa" />
@@ -73,7 +73,7 @@ const Navbar = () => {
                         </li>
 
                         <li>
-                            <NavLink to={"/configuracion"}>
+                            <NavLink to={`/profile/${auth?.user?.role === 1 ? 'admin': 'user' }`}>
                                 <div className="icon">
                                     <AiOutlineUser className="fa" />
                                     <AiOutlineUser className="fa" />

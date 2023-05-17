@@ -4,6 +4,7 @@
     --third-color: #ff7673;
     --text-color-one: #ebe5e5;
     --text-color-two: #f3ecec;
+    --clr:#f44346;
 }
 
 * {
@@ -116,6 +117,14 @@ main{
     padding: 20px 0;
     display: flex;
     border-radius: 10px;
+    background: #c31432; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #240b36, #c31432); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #240b36,
+        #c31432
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-repeat: no-repeat;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -459,6 +468,7 @@ footer .footerContainer .sec.aboutus p {
     background-color: #190229;
     padding: 8px 100px;
     text-align: center;
+    z-index: 10;
     color: var(--text-color-two);
 }
 
@@ -931,4 +941,190 @@ footer .footerContainer .sec.aboutus p {
 
 .btn-sz-primary:hover{
     background-color: #3c3ff8;
+}
+
+/* Navigation menu */
+
+.navigation{
+    position: fixed;
+    inset: 40px 0 40px 20px;
+    background-color: #fff;
+    width: 75px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.navigation.active{
+    width: 250px;
+}
+
+.menuToggle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    padding: 0px 23px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navigation.active .menuToggle::before{
+    transform: translateY(0) rotate(45deg);
+}
+
+.menuToggle::before{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: #333;
+    transform: translateY(-8px);
+    transition: 0.5s;
+}
+
+.navigation.active .menuToggle::after{
+    transform: translateY(0) rotate(-45deg);
+    box-shadow: 0 0 0 #333;
+}
+
+.menuToggle::after{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: #333;
+    transform: translateY(8px);
+    box-shadow: 0 -8px 0 #333;
+    transition: 0.5s;
+}
+
+.navigation ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;	
+}
+
+.navigation ul li{
+    list-style: none;
+    position: relative;
+    width: 100%;
+    height: 76px;
+    transform: translateX(-30px);
+    border-radius: 12px;
+    border: 8px solid transparent;
+    transition: 0.5s;
+}
+
+.navigation ul li.active{
+    transform: translateX(30px);
+    background: #333;
+}
+
+.navigation ul li::before{
+    content: "";
+    position: absolute;
+    top: -28px;
+    right: -20px;
+    width: 10px;
+    height: 20px;
+    background-color: transparent;
+    border-bottom-right-radius: 20px;    
+    box-shadow: 6px 5px 0 5px #333;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: 0.5s;
+}
+
+.navigation ul li.active::before{
+    right: 22px;
+    transform: scale(1);
+}
+
+.navigation ul li::after{
+    content: "";
+    position: absolute;
+    bottom: -28px;
+    right: -20px;
+    width: 10px;
+    height: 20px;
+    background-color: transparent;
+    border-top-right-radius: 20px;    
+    box-shadow: 6px -3px 0 3px #333;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: 0.5s;
+}
+
+.navigation ul li.active::after{
+    right: 22px;
+    transform: scale(1);
+}
+
+.bg-admin{
+    background-color: #333;
+}
+
+.navigation ul li a{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    font-size: 1.75em;
+    border: 6px solid transparent;
+}
+
+.navigation ul li.active a .icon{
+    color: #fff;
+}
+
+.navigation ul li.active a .icon:first-child{
+    background: var(--clr);
+}
+
+.navigation ul li.active a .icon:nth-child(2){
+    background: var(--clr);
+}
+
+.navigation ul li.active a .icon:last-child{
+    background: var(--clr);
+}
+
+.navigation ul li a .text{
+    position: relative;
+    padding: 0px 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.navigation.active ul li a .text{
+    visibility: visible;
+    opacity: 1;
+}
+
+.navigation ul li.active a .text{
+    color: var(--text-color-one);
 }
