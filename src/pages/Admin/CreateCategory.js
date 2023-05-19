@@ -22,7 +22,6 @@ const CreateCategory = () => {
             if (data.success) {
                 toast.success(`${name} fue creado`);
             }
-            name = "";
         } catch (error) {
             console.log(error);
             toast.error("Algo salio mal al ingresar la categoria");
@@ -40,6 +39,22 @@ const CreateCategory = () => {
                 toast.success(`${selected.name} fue actualizado a ${updatedName}`);
                 setSelected(null);
                 setUpdatedName("");
+                getAllCategories();
+            } else {
+                toast.error(data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("Algo salio mal al actualizar la categoria");
+        }
+    };
+
+    const handleDelete = async (pId) => {
+        try {
+            const { data } = await axios.delete(
+                `/api/v1/category/delete-category/${pId}`);
+            if (data.success) {
+                toast.success(`la categoria fue eliminada`);
                 getAllCategories();
             } else {
                 toast.error(data.message);
@@ -109,7 +124,7 @@ const CreateCategory = () => {
                                             </button>
                                         </td>
                                         <td>
-                                            <button className="btn btn-danger ms-2">Borrar</button>
+                                            <button className="btn btn-danger ms-2" onClick={() => handleDelete(c._id)}>Borrar</button>
                                         </td>
                                     </tr>
                                 </>

@@ -5,7 +5,7 @@ const Modal = ({ closeModal, value, setValue, handleSubmit, title, btnText }) =>
     return (
         <div className='modalBackground'>
             <div className='modalContainer'>
-                <button onClick={() => closeModal(false)}> X </button>
+                <button onClick={() => closeModal(false)} className='close'> X </button>
                 <div className='modalTitle'>
                     <h1>{title}</h1>
                 </div>

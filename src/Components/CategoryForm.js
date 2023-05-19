@@ -5,7 +5,7 @@ const CategoryForm = ({ handleSubmit, value, setValue}) => {
 
 
     return (
-        <div className="box">
+        <div className="boxContainer">
             <form onSubmit={handleSubmit}>
             <input
                 type="text"
