@@ -19,12 +19,12 @@ router.put(
 )
 
 router.get(
-    "/get-categoty",
+    "/get-category",
     categoryController
 )
 
 router.get(
-    "/single-categoty/:slug",
+    "/single-category/:slug",
     singleCategoryController
 )
 
