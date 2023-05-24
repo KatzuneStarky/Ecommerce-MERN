@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { BiCategoryAlt } from 'react-icons/bi'
 import { IoMdCreate } from 'react-icons/io'
 import { FiUsers } from 'react-icons/fi'
+import { BsFillBoxFill } from 'react-icons/bs'
 
 const AdminMenu = () => {
     const [isActive, setActive] = useState("false");
@@ -40,6 +41,15 @@ const AdminMenu = () => {
                             <IoMdCreate />
                         </span>
                         <span className='text'>Create product</span>
+                    </NavLink>
+                </li>
+
+                <li className={'list'}>
+                    <NavLink to={"/dashboard/admin/products"}>
+                        <span className='icon'>
+                            <BsFillBoxFill />
+                        </span>
+                        <span className='text'>Product</span>
                     </NavLink>
                 </li>
 

@@ -35,13 +35,13 @@ const CreateCategory = () => {
                 `/api/v1/category/update-category/${selected._id}`,
                 { name: updatedName }
             );
-            if (data.success) {
+            if (data?.success) {
                 toast.success(`${selected.name} fue actualizado a ${updatedName}`);
                 setSelected(null);
                 setUpdatedName("");
                 getAllCategories();
             } else {
-                toast.error(data.message);
+                toast.error(data?.message);
             }
         } catch (error) {
             console.log(error);
@@ -53,11 +53,11 @@ const CreateCategory = () => {
         try {
             const { data } = await axios.delete(
                 `/api/v1/category/delete-category/${pId}`);
-            if (data.success) {
+            if (data?.success) {
                 toast.success(`la categoria fue eliminada`);
                 getAllCategories();
             } else {
-                toast.error(data.message);
+                toast.error(data?.message);
             }
         } catch (error) {
             console.log(error);
@@ -68,8 +68,8 @@ const CreateCategory = () => {
     const getAllCategories = async () => {
         try {
             const { data } = await axios.get("/api/v1/category/get-category");
-            if (data.success) {
-                setCategories(data.category);
+            if (data?.success) {
+                setCategories(data?.category);
             }
         } catch (error) {
             console.log(error);
